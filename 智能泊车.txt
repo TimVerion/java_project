@@ -1,0 +1,63 @@
+1，运行环境jdk1.7或者jdk1.8，开发工具eclipse动态web 项目2.5（没有使用maven）
+2，服务器使用tomcat7
+3，数据库使用mysql5.5版本，账户root密码root端口3306
+4，项目中使用域名：com.park
+5，mvc架构中model使用了jdbc的dao，view使用了jsp（有些使用ajax异步传输，减轻服务器压力），controller使用了基本的service（servlet）
+//表的设计
+客户登陆，注册，一个客户表
+tb_client 客户注册表
+id
+username
+password
+
+tb_clientinfo 客户信息补充表
+id
+cid  设置外键约束
+sex 性别
+sign 签名
+phonenum 手机号
+email 邮箱
+
+tb_car  客户汽车表
+id
+cid  设置外键约束
+carbrand 车类型
+carnum 车牌号
+
+tb_stall 车位表（由管理员发布）
+id 
+isleisure 是否空闲
+predicttime 停车时间
+leisuretime 预估空闲时间
+currentcarid  当前停车车辆id，没有为空
+
+tb_indent  订单表
+id
+carid  车辆id
+stallid 停车位id
+predicttime 停留时间（min）
+stallprice 车位价格（h）
+ispay 是否支付 支付方式：微信或支付宝
+tb_park 停车场表格
+id编号
+parkname停车场名字
+stallsize停车场类型
+parkcontent介绍
+img图片地址
+1.注册登陆后，使用邮箱或者手机号激活
+2.补充自己的个人信息
+3.输入自己的车辆信息
+4.查看停车场的停车位信息
+5.填写订单，提交订单后改变车位状态（leisure）
+6.支持后期支付订单，微信支付宝
+7.停车时长到达前提车，支持提前退出。订单信息发生改变
+8.停车时长到达后提车，发出汽车警告，时间超出5分钟，未自动增加停车时间，将自动增加一小时（并不会退回定金）。
+9.提车完成后，停车位信息恢复到空闲（leisure）
+10.退出功能。
+
+
+
+//增加记住密码的功能
+//实现订单的功能
+//订单的增删该查
+//地图导航
